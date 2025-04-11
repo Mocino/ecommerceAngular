@@ -1,0 +1,104 @@
+<div class="axil-signin-area">
+  <!-- Start Header -->
+  <div class="signin-header">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <a href="index.html" class="site-logo">
+          <img src="./assets/images/logo/logo.png" alt="logo">
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div class="singin-header-btn">
+          <p>Already a member?</p>
+          <a routerLink="/auth/login" class="axil-btn btn-bg-secondary sign-up-btn">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Header -->
+
+  <div class="row">
+    <div class="col-xl-4 col-lg-6">
+      <div class="axil-signin-banner bg_image bg_image--10">
+        <h3 class="title">We Offer the Best Products</h3>
+      </div>
+    </div>
+    <div class="col-lg-6 offset-xl-2">
+      <div class="axil-signin-form-wrap">
+        <div class="axil-signin-form">
+          <h3 class="title">I'm New Here</h3>
+          <p class="b2 mb--55">Enter your detail below</p>
+          <form [formGroup]="registerForm" (ngSubmit)="registro()" class="singin-form">
+            <div class="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                [class.is-invalid]="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
+              <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)" class="invalid-feedback">
+                Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Surname</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="surname"
+                [class.is-invalid]="registerForm.get('surname')?.invalid && (registerForm.get('surname')?.touched || registerForm.get('surname')?.dirty)">
+              <div *ngIf="registerForm.get('surname')?.invalid && (registerForm.get('surname')?.touched || registerForm.get('surname')?.dirty)" class="invalid-feedback">
+                Surname is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                [class.is-invalid]="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
+              <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="invalid-feedback">
+                <span *ngIf="registerForm.get('email')?.hasError('required')">Email is required</span>
+                <span *ngIf="registerForm.get('email')?.hasError('email')">Please enter a valid email</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                [class.is-invalid]="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)">
+              <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="invalid-feedback">
+                <span *ngIf="registerForm.get('password')?.hasError('required')">Password is required</span>
+                <span *ngIf="registerForm.get('password')?.hasError('minlength')">
+                  Password must be at least 6 characters
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Repeat Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="repet_password"
+                [class.is-invalid]="registerForm.hasError('mismatch') && (registerForm.get('repet_password')?.touched || registerForm.get('repet_password')?.dirty)">
+              <div *ngIf="registerForm.hasError('mismatch') && (registerForm.get('repet_password')?.touched || registerForm.get('repet_password')?.dirty)" class="invalid-feedback">
+                Passwords must match
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                type="submit"
+                class="axil-btn btn-bg-primary submit-btn"
+                [disabled]="registerForm.invalid">
+                Create Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
